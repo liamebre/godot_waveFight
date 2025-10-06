@@ -57,3 +57,9 @@ func dashing(velocity,currDashDist):
 		var tween = get_tree().create_tween()
 		tween.tween_property(self,"position",position + (velocity * currDashDist), 0.2)
 		lastDash = t
+
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
