@@ -9,6 +9,7 @@ size = Vector2(128, 128)
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_onrkg")
+speed = null
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
@@ -21,6 +22,6 @@ shape = SubResource("RectangleShape2D_i3pqv")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="dashTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.5
 
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
