@@ -4,9 +4,16 @@ var screen_size # Size of the game window.
 var dashSpeed = speed * 3
 var tt = 0.0
 var lastDash = 0.0
+signal hit
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
+	
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
 	
 func _physics_process(delta):
 	tt+= delta
@@ -23,3 +30,9 @@ func get_input():
 
 func _on_dash_timer_timeout() -> void:
 	speed = 400
+
+func _on_body_entered(_body):
+	hide() # Player disappears after being hit.
+	hit.emit()
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$CollisionShape2D.set_deferred("disabled", true)
