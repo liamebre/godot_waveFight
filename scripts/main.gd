@@ -25,8 +25,7 @@ func _on_start_timer_timeout():
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
 	var mob = mob_scene.instantiate()
-
-
+	
 	# Choose a random location on Path2D.
 	var mob_spawn_location = $MobPath/MobSpawnLocation
 	mob_spawn_location.progress_ratio = randf()
@@ -43,7 +42,7 @@ func _on_mob_timer_timeout():
 
 	# Choose the velocity for the mob.
 	var velocity = Vector2(randf_range(300.0, 500.0), 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
+	mob.linear_velocity += velocity.rotated(direction)
 	
 
 	# Spawn the mob by adding it to the Main scene.
