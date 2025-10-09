@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_tbgi4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -626, -188, 0, 0, 0, 0, 398, -188, 0, 0, 0, 0, 398, 388, 0, 0, 0, 0, -626, 380, 0, 0, 0, 0, -626, -188)
+"points": PackedVector2Array(0, 0, 0, 0, -354, -28, 0, 0, 0, 0, 142, -28, 0, 0, 0, 0, 142, 332, 0, 0, 0, 0, -354, 324, 0, 0, 0, 0, -354, -28)
 }
 point_count = 5
 
@@ -31,13 +31,14 @@ one_shot = true
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(2562, 1337)
+scale = Vector2(inf_neg, 3.75)
 
 [node name="MobPath" type="Path2D" parent="."]
 position = Vector2(2674, 1140)
 curve = SubResource("Curve2D_tbgi4")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-626, -188)
+position = Vector2(-354, -28)
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
