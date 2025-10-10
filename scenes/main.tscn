@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_tbgi4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -354, -28, 0, 0, 0, 0, 142, -28, 0, 0, 0, 0, 142, 332, 0, 0, 0, 0, -354, 324, 0, 0, 0, 0, -354, -28)
+"points": PackedVector2Array(0, 0, 0, 0, -698, -228, 0, 0, 0, 0, 454, -228, 0, 0, 0, 0, 454, 420, 0, 0, 0, 0, -698, 412, 0, 0, 0, 0, -698, -228)
 }
 point_count = 5
 
@@ -18,7 +18,7 @@ mob_scene = ExtResource("3_sugp2")
 [node name="map" parent="." instance=ExtResource("1_0wfyh")]
 
 [node name="Player" parent="." instance=ExtResource("2_sugp2")]
-position = Vector2(2556, 1242)
+position = Vector2(2568, 1408)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -33,12 +33,14 @@ one_shot = true
 position = Vector2(2562, 1337)
 scale = Vector2(inf_neg, 3.75)
 
+[node name="enemy" parent="." instance=ExtResource("3_sugp2")]
+
 [node name="MobPath" type="Path2D" parent="."]
-position = Vector2(2674, 1140)
+position = Vector2(2688, 1312)
 curve = SubResource("Curve2D_tbgi4")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-354, -28)
+position = Vector2(-698, -228)
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
