@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@export var weapon: PackedScene
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 var dashSpeed = speed * 3
@@ -27,7 +28,9 @@ func get_input():
 		lastDash = tt #adds a pause inbetween dashes 
 		speed = dashSpeed#stops stacking the dash multiplier
 	velocity = input_dir * speed
-
+	if Input.is_action_just_pressed("Lmouse"):
+		var attack = weapon.instantiate()
+		
 func _on_dash_timer_timeout() -> void:
 	speed = 400
 

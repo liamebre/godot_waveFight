@@ -33,8 +33,6 @@ one_shot = true
 position = Vector2(2562, 1337)
 scale = Vector2(inf_neg, 3.75)
 
-[node name="enemy" parent="." instance=ExtResource("3_sugp2")]
-
 [node name="MobPath" type="Path2D" parent="."]
 position = Vector2(2688, 1312)
 curve = SubResource("Curve2D_tbgi4")
