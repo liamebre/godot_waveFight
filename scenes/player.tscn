@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://lece12mjaqsc" path="res://assets/icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cseltpp6hday0" path="res://scripts/player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://m6dkr80m1vxk" path="res://scenes/weapon.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://m6dkr80m1vxk" path="res://scenes/sword.tscn" id="2_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 60.0333

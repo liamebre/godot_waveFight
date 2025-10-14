@@ -6,6 +6,8 @@ var dashSpeed = speed * 3
 var tt = 0.0
 var lastDash = 0.0
 signal hit
+var attack
+var health
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -29,7 +31,7 @@ func get_input():
 		speed = dashSpeed#stops stacking the dash multiplier
 	velocity = input_dir * speed
 	if Input.is_action_just_pressed("Lmouse"):
-		var attack = weapon.instantiate()
+		attack = weapon.instantiate()
 		
 func _on_dash_timer_timeout() -> void:
 	speed = 400
