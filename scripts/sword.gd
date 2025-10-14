@@ -12,6 +12,7 @@ func set_active(value):
 	set_process_input(value)
 	
 func _ready():
+	print("sword")
 	$AnimatedSprite2D.play()
 	
 func _on_body_shape_entered(_body):
