@@ -31,7 +31,6 @@ func get_input():
 		speed = dashSpeed#stops stacking the dash multiplier
 	velocity = input_dir * speed
 	if Input.is_action_just_pressed("Lmouse"):
-		print ("pre sword")
 		attack = weapon.instantiate()
 		add_child(attack)
 		
