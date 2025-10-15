@@ -8,16 +8,16 @@ func set_active(value):
 	set_process_input(value)
 	
 func _ready():
-	print("sword")
 	damage = 5
-	speed = 0.5
-	maxAngle = 180
-	$AttackTime.wait_time = speed
+	speed = 4
+	maxAngle = deg_to_rad(180)
+	$AttackTime.wait_time = speed/8
 	$AttackTime.start()
 	$AnimatedSprite2D.play()
 	
-func _process(_delta):
-	pass
+func _process(delta):
+	rotation = lerp_angle(minAngle,maxAngle,tt)
+	tt += delta * 4
 	
 func _on_body_shape_entered(_body):
 	_body.health -= damage
