@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5nhlbtgwk4wl"]
+
+[ext_resource type="Texture2D" uid="uid://lece12mjaqsc" path="res://assets/icon.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cseltpp6hday0" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://m6dkr80m1vxk" path="res://scenes/sword.tscn" id="2_qhqgy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 60.0333
+
+[node name="player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_onrkg")
+weapon = ExtResource("2_qhqgy")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

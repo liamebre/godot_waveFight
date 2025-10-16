@@ -24,3 +24,4 @@ func _on_body_shape_entered(_body):
 	
 func _on_attack_time_timeout() -> void:
 	queue_free()
+	

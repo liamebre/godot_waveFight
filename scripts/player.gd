@@ -8,12 +8,14 @@ var lastDash = 0.0
 signal hit
 var attack
 var health
+var kids
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 	
 func start(pos):
+	kids = get_child_count()
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
@@ -30,10 +32,12 @@ func get_input():
 		lastDash = tt #adds a pause inbetween dashes 
 		speed = dashSpeed#stops stacking the dash multiplier
 	velocity = input_dir * speed
-	if Input.is_action_just_pressed("Lmouse"):
+	if Input.is_action_just_pressed("Lmouse") and get_child_count(false) == kids:
 		attack = weapon.instantiate()
+		#attack.setpos(position)
 		add_child(attack)
-		
+		print(get_child_count())
+
 func _on_dash_timer_timeout() -> void:
 	speed = 400
 
