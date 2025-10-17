@@ -24,6 +24,8 @@ func _physics_process(delta):
 	tt+= delta
 	get_input()
 	move_and_collide(velocity * delta)
+	if attack:
+		attack.set_pos(position)
 	
 func get_input():
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
