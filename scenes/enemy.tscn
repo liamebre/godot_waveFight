@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djov4m80aofe8"]
+[gd_scene load_steps=5 format=3 uid="uid://djov4m80aofe8"]
 
 [ext_resource type="Texture2D" uid="uid://bvbmd3ett5vd5" path="res://assets/badguy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://chq2b3dmrtsax" path="res://scripts/enemy.gd" id="1_md0e3"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_md0e3"]
-friction = 0.0
-bounce = 0.38
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_md0e3"]
 animations = [{
@@ -29,11 +25,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xaro"]
 radius = 31.0161
 
-[node name="enemy" type="RigidBody2D"]
+[node name="enemy" type="RigidBody2D" groups=["badGuy"]]
 collision_layer = 3
 collision_mask = 3
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_md0e3")
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_md0e3")
@@ -48,3 +42,5 @@ animation = &"walking"
 shape = SubResource("CircleShape2D_7xaro")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,7 @@
 extends Node2D
 @export var mob_scene: PackedScene
 var score
+var level = 1
 
 func _ready():
 	new_game()
@@ -8,6 +9,7 @@ func _ready():
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
+
 	$StartTimer.start()
 	
 func game_over():
@@ -34,3 +36,12 @@ func _on_mob_timer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+
+func _process(_delta):
+	if score == level * 15:
+		$MobTimer.stop()
+		$ScoreTimer.stop()
+	if $Player.score == level * 20 :
+		$MobTimer.start()
+		$ScoreTimer.start()
+		level = level + 1

@@ -6,9 +6,12 @@ var dashSpeed = speed * 3
 var tt = 0.0
 var lastDash = 0.0
 signal hit
+signal die
 var attack
-var health
+var health = 50
 var kids
+var score = 0 
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -26,6 +29,8 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta)
 	if attack:
 		attack.set_pos(position)
+	if health <= 0:
+		died()
 	
 func get_input():
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -36,9 +41,7 @@ func get_input():
 	velocity = input_dir * speed
 	if Input.is_action_just_pressed("Lmouse") and get_child_count(false) == kids:
 		attack = weapon.instantiate()
-		#attack.setpos(position)
 		add_child(attack)
-		print(get_child_count())
 
 func _on_dash_timer_timeout() -> void:
 	speed = 400
@@ -48,3 +51,10 @@ func _on_body_entered(_body):
 	hit.emit()
 	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
+	
+	if _body.is_in_group("badGuy"):
+		health -= 5 
+		print(health)
+		
+func died():
+	die.emit()

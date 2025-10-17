@@ -13,14 +13,13 @@ func _ready():
 	$AttackTime.wait_time = speed/8
 	$AttackTime.start()
 	$AnimatedSprite2D.play()
-	
+	set_contact_monitor(true)
+	set_max_contacts_reported(100)
+
 func _process(delta):
 	# i need to get the player node wiht out getting the player node and casuing recursion
 	rotation = lerp_angle(minAngle,maxAngle,tt)
 	tt += delta * 4
-	
-func _on_body_shape_entered(_body):
-	_body.health -= damage
 	
 func _on_attack_time_timeout() -> void:
 	queue_free()
