@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ec8"]
-size = Vector2(94.25, 92.75)
+size = Vector2(109, 104)
 
 [node name="sword" type="RigidBody2D" groups=["weapons"]]
 collision_layer = 4
@@ -25,13 +25,14 @@ freeze = true
 script = ExtResource("1_ycbs3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-64, -64)
+position = Vector2(-77, -74)
+scale = Vector2(1.20313, 1.15625)
 sprite_frames = SubResource("SpriteFrames_ycbs3")
 autoplay = "default"
 frame_progress = 0.845696
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-81, -82)
+position = Vector2(-100.5, -97)
 shape = SubResource("RectangleShape2D_s4ec8")
 
 [node name="AttackTime" type="Timer" parent="."]
