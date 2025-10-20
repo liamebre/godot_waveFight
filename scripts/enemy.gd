@@ -1,7 +1,7 @@
 extends RigidBody2D
 @onready var player: CharacterBody2D = $"../Player"
 
-var health = 20
+var health = 15
 var active = true: set = set_active
 
 func set_active(value):

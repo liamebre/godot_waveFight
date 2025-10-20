@@ -44,13 +44,15 @@ func upgrade():
 	pass
 
 func _process(_delta):
+	#sets how long mobs spawn in the level 
+	#it increases by 15 sec every level
 	if score == level * 15:
 		$MobTimer.stop()
 		$ScoreTimer.stop()
-	if $Player.score == level * (score + (5 * level)):
-		#upgrade()
-		print($Player.score)
-		print(level)
-		$MobTimer.start()
-		$ScoreTimer.start()
-		level = level +1
+		if $Player.score == level * (score + (5 * level)):
+			#upgrade()
+			print($Player.score)
+			print(level)
+			$MobTimer.start()
+			$ScoreTimer.start()
+			level = level +1

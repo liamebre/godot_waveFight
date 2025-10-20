@@ -2,6 +2,7 @@ class_name weapons
 extends RigidBody2D
 
 var tt = 0.0
+@export var deafult_direction = Vector2.UP
 @export var damage: float = 3
 @export var speed: float = 1
 @export var size: float = 1
