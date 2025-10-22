@@ -5,12 +5,11 @@ var screen_size # Size of the game window.
 var dashSpeed = speed * 3
 var tt = 0.0
 var lastDash = 0.0
-signal hit
-signal die
 var attack
 var health = 50
 var kids
 var score = 0 
+signal dead
 
 
 func _ready():
@@ -29,8 +28,6 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta)
 	if attack:
 		attack.set_pos(position)
-	if health <= 0:
-		died()
 	
 func get_input():
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -46,17 +43,10 @@ func get_input():
 func _on_dash_timer_timeout() -> void:
 	speed = 400
 
-func _on_body_entered(body: Node) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
-	
-	if body.is_in_group("badGuy"):
-		health -= 5
-		print(health)
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
-	
-
-		
-func died():
-	die.emit()
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("badGuy") && $hitTimer.time_left == 0:
+		$hitTimer.start()
+		print("hit")
+		health -= body.damage
+		if health <= 0:
+			dead.emit()

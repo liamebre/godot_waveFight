@@ -56,3 +56,7 @@ func _process(_delta):
 			$MobTimer.start()
 			$ScoreTimer.start()
 			level = level +1
+
+func _on_player_dead() -> void:
+	game_over()
+	new_game()

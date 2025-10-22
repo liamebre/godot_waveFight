@@ -5,14 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://m6dkr80m1vxk" path="res://scenes/sword.tscn" id="2_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 60.0333
+radius = 62.0
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_mask = 3
 script = ExtResource("1_onrkg")
 weapon = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -23,4 +29,9 @@ texture = ExtResource("1_4flbx")
 [node name="dashTimer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="hitTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
