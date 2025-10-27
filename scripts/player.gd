@@ -8,6 +8,7 @@ var lastDash = 0.0
 var attack
 var health = 50
 var kids
+var movement = speed
 var score = 0 
 signal dead
 
@@ -34,14 +35,14 @@ func get_input():
 	if Input.is_action_just_pressed("dash")&&tt - lastDash > 0.50:
 		$dashTimer.start()
 		lastDash = tt #adds a pause inbetween dashes 
-		speed = dashSpeed#stops stacking the dash multiplier
-	velocity = input_dir * speed
+		movement = dashSpeed#stops stacking the dash multiplier
+	velocity = input_dir * movement
 	if Input.is_action_just_pressed("Lmouse") and get_child_count(false) == kids:
 		attack = weapon.instantiate()
 		add_child(attack)
 
 func _on_dash_timer_timeout() -> void:
-	speed = 400
+	movement = speed
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("badGuy") && $hitTimer.time_left == 0:
