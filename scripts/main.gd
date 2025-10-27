@@ -3,6 +3,7 @@ extends Node2D
 @export var upgrades : PackedScene
 var score
 var level = 1
+var mobs
 
 func _ready():
 	new_game()
@@ -10,7 +11,6 @@ func _ready():
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
-
 	$StartTimer.start()
 	
 func game_over():
@@ -34,7 +34,6 @@ func _on_mob_timer_timeout():
 
 	# Set the mob's position to the random location.
 	mob.position = mob_spawn_location.global_position
-
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 	
@@ -46,17 +45,18 @@ func upgrade():
 func _process(_delta):
 	#sets how long mobs spawn in the level 
 	#it increases by 15 sec every level
-	if score == level * 15:
+	if score == level * 5:
 		$MobTimer.stop()
 		$ScoreTimer.stop()
-		if $Player.score == level * (score + (5 * level)):
-			#upgrade()
+		if $Player.score == score:
+			upgrade()
 			print($Player.score)
 			print(level)
 			$MobTimer.start()
 			$ScoreTimer.start()
 			level = level +1
 
+		#add conditon so that after upgrade it starts timers again
+
 func _on_player_dead() -> void:
 	game_over()
-	new_game()

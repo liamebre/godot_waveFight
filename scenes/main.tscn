@@ -23,7 +23,6 @@ upgrades = ExtResource("3_tbgi4")
 position = Vector2(2568, 1408)
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.75
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
