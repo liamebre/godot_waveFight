@@ -30,7 +30,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="BoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="BoxContainer/HBoxContainer" groups=["1"]]
 process_mode = 3
 layout_mode = 2
 text = "hello this is button 1 "
@@ -43,7 +43,7 @@ layout_mode = 2
 process_mode = 3
 layout_mode = 2
 
-[node name="Button" type="Button" parent="BoxContainer/HBoxContainer2"]
+[node name="Button" type="Button" parent="BoxContainer/HBoxContainer2" groups=["2"]]
 layout_mode = 2
 text = "hello this is button 2"
 
@@ -55,7 +55,7 @@ layout_mode = 2
 process_mode = 3
 layout_mode = 2
 
-[node name="Button" type="Button" parent="BoxContainer/HBoxContainer3"]
+[node name="Button" type="Button" parent="BoxContainer/HBoxContainer3" groups=["3"]]
 layout_mode = 2
 text = "hello this is button 3"
 
