@@ -29,7 +29,6 @@ func _physics_process(_delta):
 		died()
 
 func died():
-	print("i died")
 	player.score += 1
 	queue_free()
 

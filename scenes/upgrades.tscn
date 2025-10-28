@@ -63,9 +63,9 @@ text = "hello this is button 3"
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 
-[connection signal="pressed" from="BoxContainer/HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/Button1" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BoxContainer/HBoxContainer2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer2/Button2" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BoxContainer/HBoxContainer3/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer2/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer3/Button3" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer3/Button3" to="." method="_on_button_3_pressed"]
